@@ -48,6 +48,7 @@ services:
             - volumes_source
 
     php7:
+        image: dev-php7-v1
         build:
             context: ./php7
             args:

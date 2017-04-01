@@ -4,13 +4,14 @@ FROM alpine:latest
 #maintainer
 MAINTAINER topone4tvs <topone4tvs@163.com>
 
-RUN echo -e "http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories 
+RUN echo -e "http://dl-3.alpinelinux.org/alpine/edge/main/" >> /etc/apk/repositories 
+RUN echo -e "http://dl-5.alpinelinux.org/alpine/edge/main/" >> /etc/apk/repositories 
+
 RUN apk update && apk upgrade
-RUN apk add --update
 RUN apk add libuser
 
 #install base
-RUN apk add rabbitmq-c
+RUN apk add rabbitmq-c-0.8.0-r1
 #install php
 RUN apk add php7 \
     php7-opcache \
