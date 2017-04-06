@@ -69,6 +69,9 @@ RUN apk add php7 \
     php7-mysqlnd \
     php7-gmagick
 
+#install mysql
+RUN apk add --update mysql mysql-client
+
 WORKDIR /var/www
 
 #command
