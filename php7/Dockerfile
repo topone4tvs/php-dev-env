@@ -4,18 +4,19 @@ FROM alpine:latest
 #maintainer
 MAINTAINER topone4tvs <topone4tvs@163.com>
 
-RUN echo -e "http://dl-3.alpinelinux.org/alpine/edge/main/" >> /etc/apk/repositories 
-RUN echo -e "http://dl-5.alpinelinux.org/alpine/edge/main/" >> /etc/apk/repositories 
+RUN echo -e "http://dl-cdn.alpinelinux.org/alpine/v3.5/main" >> /etc/apk/repositories 
+RUN echo -e "http://dl-cdn.alpinelinux.org/alpine/v3.5/community" >> /etc/apk/repositories 
+RUN echo -e "http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories 
 
 RUN apk update && apk upgrade
+RUN apk add --update alpine-sdk
 RUN apk add libuser
 
 #install base
-RUN apk add rabbitmq-c-0.8.0-r1
+#RUN apk add rabbitmq-c-0.8.0-r1
 #install php
 RUN apk add php7 \
     php7-opcache \
-    php7-zip \
     php7-mbstring \
     php7-xmlrpc \
     php7-sysvshm \
@@ -34,7 +35,6 @@ RUN apk add php7 \
     php7-sysvmsg \
     php7-iconv \
     php7-dev \
-    php7-ftp \
     php7-gettext \
     php7-mcrypt \
     php7-xmlreader \
@@ -76,6 +76,8 @@ ADD ./php.ini /etc/php7/php.ini
 ADD ./php-fpm.conf /etc/php7/php-fpm.d/www.conf
 ADD ./xdebug.ini /etc/php7/conf.d/20_xdebug.ini
 RUN echo "xdebug.remote_host = ${LOCAL_IP_ADD}" >> /etc/php7/conf.d/20_xdebug.ini
+RUN echo "xdebug.idekey = PHPSTORM" >> /etc/php7/conf.d/20_xdebug.ini
+RUN echo "xdebug.remote_autostart = off" >> /etc/php7/conf.d/20_xdebug.ini
 
 
 #RUN cd /data/web/

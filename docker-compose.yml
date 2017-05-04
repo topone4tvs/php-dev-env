@@ -80,7 +80,7 @@ services:
     volumes_source:
         image: tianon/true
         volumes:
-            - /private/var/www:/var/www
+            - /private/var/www:/private/var/www
 
 ### Databases Data Container ################################
 
