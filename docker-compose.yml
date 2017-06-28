@@ -75,6 +75,9 @@ services:
         ports:
             - "80:80"
             - "443:443"
+            - "8080:8080"
+            - "8888:8888"
+            - "9090:9090"
 ### Application Code Container ######################
 
     volumes_source:

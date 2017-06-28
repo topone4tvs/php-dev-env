@@ -17,7 +17,7 @@ ADD nginx.conf /etc/nginx/nginx.conf
 RUN echo "upstream php-upstream { server ${PHP_UPSTREAM}:9000; }" > /etc/nginx/conf.d/upstream.conf
 
 #expose
-EXPOSE 80 443
+EXPOSE 80 443 8080 8888 9090
 
 #exec command when start container
 CMD ["nginx", "-g", "daemon off;"]
